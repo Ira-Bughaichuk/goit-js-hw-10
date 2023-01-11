@@ -9,17 +9,18 @@ const DEBOUNCE_DELAY = 300;
 const refs = {
     inputEl: document.querySelector('#search-box'),
     listEl: document.querySelector('.country-list'),
-    divEl: document.querySelector('.country-info'),
+    divEl:document.querySelector('.country-info'),
+
 }
 refs.inputEl.addEventListener("input", debounce(onSearch, DEBOUNCE_DELAY));
 //console.log(refs.inputEl);
-console.log(document.querySelector('.country-info'));
+
 function onSearch(e) {
     e.preventDefault();
 
     const name = refs.inputEl.value.trim();
     //console.log(name);
-    //clearContainer();
+    clearContainer();
     if (name) 
         //console.log(name);
         fetchCountries(name)
@@ -54,7 +55,6 @@ function searchCountry(countries) {
     </div>`;
      })).join("");
     
-
     refs.divEl.insertAdjacentHTML('beforeend', markupCard)  
 };
 
@@ -78,9 +78,9 @@ function clearError(countries) {
     }
 }
 
-// function clearContainer() {
-//     refs.listEl.innerHTML = ''; 
-//     refs.divEl.innerHTML = ''; 
-// }
+function clearContainer() {
+    refs.listEl.innerHTML = ''; 
+    refs.divEl.innerHTML = ''; 
+}
 
 
